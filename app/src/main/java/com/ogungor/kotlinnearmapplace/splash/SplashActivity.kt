@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.ogungor.kotlinnearmapplace.R
 import com.ogungor.kotlinnearmapplace.util.RunTimePermissionHelper
-import com.ogungor.kotlinnearmapplace.util.RunTimePermissionListener
 import com.ogungor.kotlinnearmapplace.util.extention.startLocationPermissionActivity
 import com.ogungor.kotlinnearmapplace.util.extention.startMapsActivity
 
@@ -51,7 +50,7 @@ class SplashActivity : AppCompatActivity(), SplashActivityContract.View {
     override fun startHandler() {
 
         Handler().postDelayed({
-            splashActivityPresenter.handlerFinised()
+            splashActivityPresenter.handlerFinished()
 
 
         },MS_HANDLER_DELAY_TIME)

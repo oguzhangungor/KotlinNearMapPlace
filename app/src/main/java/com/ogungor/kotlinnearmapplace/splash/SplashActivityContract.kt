@@ -9,7 +9,7 @@ interface SplashActivityContract {
 
         fun create()
 
-        fun handlerFinised()
+        fun handlerFinished()
 
         fun checkLocationPermission()
 

@@ -9,7 +9,7 @@ class SplashActivityPresenter(private val runTimePermissionListener: RunTimePerm
     private var view: SplashActivityContract.View? = null
 
     override fun setView(view: SplashActivityContract.View) {
-        this.view
+        this.view=view
     }
 
     override fun destroy() {
@@ -26,7 +26,7 @@ class SplashActivityPresenter(private val runTimePermissionListener: RunTimePerm
 
     }
 
-    override fun handlerFinised() {
+    override fun handlerFinished() {
         checkLocationPermission()
     }
 
