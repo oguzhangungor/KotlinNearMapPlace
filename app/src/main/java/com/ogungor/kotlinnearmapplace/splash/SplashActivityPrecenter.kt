@@ -21,6 +21,7 @@ class SplashActivityPresenter(private val runTimePermissionListener: RunTimePerm
         view?.run {
             initUi()
             startGifAnim()
+            startHandler()
         }
 
     }

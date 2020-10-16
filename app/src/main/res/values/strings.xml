@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KotlinNearMapPlace</string>
+    <string name="app_name">Kotlin Near Map Place</string>
     <string name="title_activity_maps">Near Map</string>
     <string name="title_activity_view_direction">Map</string>
 </resources>
