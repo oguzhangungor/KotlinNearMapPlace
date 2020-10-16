@@ -28,7 +28,7 @@ class LocationPermissionActivity : AppCompatActivity(), LocationPermissionActivi
 
     }
 
-    fun locationPermission() {
+    fun locationPermission(view:View) {
 
         locationPermissionPresenter.requesPermissionClick()
 
