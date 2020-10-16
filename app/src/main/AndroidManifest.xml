@@ -33,6 +33,9 @@
              />
         <activity android:name=".ViewPlaceActivity" />
 
+        <activity android:name=".locationpermission.LocationPermissionActivity"
+            ></activity>
+
         <activity android:name=".splash.SplashActivity"
             >
 
