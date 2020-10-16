@@ -2,6 +2,7 @@ package com.ogungor.kotlinnearmapplace
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
@@ -154,38 +155,38 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                 )
 
                             }
-                           /* if (typePlace.equals("hospital")) {
-                                markerOptios.icon(
-                                    BitmapDescriptorFactory.defaultMarker(
-                                        BitmapDescriptorFactory.HUE_RED
-                                    )
-                                )
-                            } else if (typePlace.equals("market")) {
-                                markerOptios.icon(
-                                    BitmapDescriptorFactory.defaultMarker(
-                                        BitmapDescriptorFactory.HUE_RED
-                                    )
-                                )
-                            } else if (typePlace.equals("restaurant")) {
-                                markerOptios.icon(
-                                    BitmapDescriptorFactory.defaultMarker(
-                                        BitmapDescriptorFactory.HUE_RED
-                                    )
-                                )
-                            } else if (typePlace.equals("school")) {
-                                markerOptios.icon(
-                                    BitmapDescriptorFactory.defaultMarker(
-                                        BitmapDescriptorFactory.HUE_RED
-                                    )
-                                )
-                            } else {
-                                markerOptios.icon(
-                                    BitmapDescriptorFactory.defaultMarker(
-                                        BitmapDescriptorFactory.HUE_RED
-                                    )
-                                )
+                            /* if (typePlace.equals("hospital")) {
+                                 markerOptios.icon(
+                                     BitmapDescriptorFactory.defaultMarker(
+                                         BitmapDescriptorFactory.HUE_RED
+                                     )
+                                 )
+                             } else if (typePlace.equals("market")) {
+                                 markerOptios.icon(
+                                     BitmapDescriptorFactory.defaultMarker(
+                                         BitmapDescriptorFactory.HUE_RED
+                                     )
+                                 )
+                             } else if (typePlace.equals("restaurant")) {
+                                 markerOptios.icon(
+                                     BitmapDescriptorFactory.defaultMarker(
+                                         BitmapDescriptorFactory.HUE_RED
+                                     )
+                                 )
+                             } else if (typePlace.equals("school")) {
+                                 markerOptios.icon(
+                                     BitmapDescriptorFactory.defaultMarker(
+                                         BitmapDescriptorFactory.HUE_RED
+                                     )
+                                 )
+                             } else {
+                                 markerOptios.icon(
+                                     BitmapDescriptorFactory.defaultMarker(
+                                         BitmapDescriptorFactory.HUE_RED
+                                     )
+                                 )
 
-                            }*/
+                             }*/
                             markerOptios.snippet(typePlace.toString())  //Alt Bilgi
 
                             //Add marker to map
@@ -196,7 +197,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         }
                         // Move Camera Zoom
 
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude,longitude), 16f))
+                        mMap.moveCamera(
+                            CameraUpdateFactory.newLatLngZoom(
+                                LatLng(
+                                    latitude,
+                                    longitude
+                                ), 16f
+                            )
+                        )
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(17f))
 
 
@@ -231,7 +239,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Son lokasyonu alıyoruz
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(location: LocationResult?) {
-                mLastLocation = location!!.locations.get(location!!.locations.size - 1) //Get Last Location
+                mLastLocation =
+                    location!!.locations.get(location!!.locations.size - 1) //Get Last Location
                 if (mMarker != null) {
                     mMarker!!.remove()
                 }
@@ -271,10 +280,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-
     //Kullanıcının iznini kontrol ediyoruz bunu splash ekranında yapacağız.
     private fun checkLocationPermission(): Boolean {
-
 
 
         if (ContextCompat.checkSelfPermission(
@@ -294,7 +301,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     MY_PERMISSION_CODE
                 )
             else
-            ActivityCompat.requestPermissions(
+                ActivityCompat.requestPermissions(
                     this,
                     arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     MY_PERMISSION_CODE
@@ -373,6 +380,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //enable Zoom Control
 
         mMap.uiSettings.isZoomControlsEnabled = true
+
+
+       /* mMap.setOnMarkerClickListener { marker ->
+
+            /*if (marker.snippet != null) {
+
+                Common.currentResult = currentPlace!!.results!![Integer.parseInt(marker.snippet)]
+
+
+
+            }
+            true
+
+             */
+            startActivity(Intent(this, ViewPlaceActivity::class.java))
+
+true
+        }*/
+
+
 
 
     }
