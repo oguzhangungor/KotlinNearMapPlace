@@ -19,6 +19,8 @@ interface SplashActivityContract {
 
 
 
+
+
     }
 
     interface View{
