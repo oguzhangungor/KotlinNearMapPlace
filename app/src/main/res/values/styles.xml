@@ -33,4 +33,11 @@
         <item name="android:fontFamily">@font/ubuntu_medium</item>
     </style>
 
+    <style name="LocationPermissionText" parent="RegularText">
+        <item name="android:gravity">center</item>
+        <item name="android:windowTitleSize">@dimen/text_large</item>
+        <item name="android:textColor">@color/grey</item>
+
+    </style>
+
 </resources>
