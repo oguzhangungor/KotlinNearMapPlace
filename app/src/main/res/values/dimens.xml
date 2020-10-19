@@ -21,6 +21,16 @@
     <dimen name="margin_large">20dp</dimen>
 
 
+    <!-- Radius Size-->
+    <dimen name="default_radius">4dp</dimen>
+
+
+    <!-- Padding Size-->
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_24">24dp</dimen>
+
+
 
 
 
