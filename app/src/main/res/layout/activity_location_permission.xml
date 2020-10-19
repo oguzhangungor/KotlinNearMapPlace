@@ -11,10 +11,11 @@
         android:layout_height="match_parent"
         android:layout_above="@id/button_location_permission"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/margin_small"
         android:layout_marginBottom="@dimen/margin_small"
         android:scrollbars="none"
         android:overScrollMode="never"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/margin_large"
         >
 
 
