@@ -26,13 +26,14 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.ogungor.kotlinnearmapplace.Common.Common
 import com.ogungor.kotlinnearmapplace.Model.MyPlaces
 import com.ogungor.kotlinnearmapplace.Remote.IGoogleAPIService
+import com.ogungor.kotlinnearmapplace.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_maps.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.StringBuilder
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity : BaseActivity(), OnMapReadyCallback {
 
 
     private lateinit var mMap: GoogleMap
@@ -62,7 +63,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_maps)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -75,7 +75,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         //Request runtime Permission
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkLocationPermission()) {
                 buildLocationRequest()
                 buildLocationCallBack()
@@ -98,6 +98,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             )
         }
 
+        */
+
         bottom_navigator_view.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.action_hospital -> nearByPlace("hospital")
@@ -110,6 +112,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     }
+
+    override fun getLayout(): Int=R.layout.activity_maps
 
     private fun nearByPlace(typePlace: String) {
 

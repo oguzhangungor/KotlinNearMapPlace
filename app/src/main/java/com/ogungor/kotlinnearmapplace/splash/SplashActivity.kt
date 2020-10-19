@@ -6,11 +6,12 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.ogungor.kotlinnearmapplace.R
+import com.ogungor.kotlinnearmapplace.base.BaseActivity
 import com.ogungor.kotlinnearmapplace.util.RunTimePermissionHelper
 import com.ogungor.kotlinnearmapplace.util.extention.startLocationPermissionActivity
 import com.ogungor.kotlinnearmapplace.util.extention.startMapsActivity
 
-class SplashActivity : AppCompatActivity(), SplashActivityContract.View {
+class SplashActivity : BaseActivity(), SplashActivityContract.View {
 
     private val MS_HANDLER_DELAY_TIME=4000L
 
@@ -33,6 +34,8 @@ class SplashActivity : AppCompatActivity(), SplashActivityContract.View {
 
 
     }
+
+    override fun getLayout(): Int =R.layout.activity_splash
 
     override fun onDestroy() {
         super.onDestroy()

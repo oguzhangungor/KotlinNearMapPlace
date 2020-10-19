@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.ogungor.kotlinnearmapplace.R
+import com.ogungor.kotlinnearmapplace.base.BaseActivity
 import com.ogungor.kotlinnearmapplace.splash.SplashActivityContract
 import com.ogungor.kotlinnearmapplace.util.RunTimePermissionHelper
 import com.ogungor.kotlinnearmapplace.util.RunTimePermissionListener
 import com.ogungor.kotlinnearmapplace.util.extention.startMapsActivity
 
-class LocationPermissionActivity : AppCompatActivity(), LocationPermissionActivityContract.View {
+class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityContract.View {
 
     private lateinit var locationPermissionPresenter: LocationPermissionActivityContract.Presenter
 
@@ -27,6 +28,8 @@ class LocationPermissionActivity : AppCompatActivity(), LocationPermissionActivi
         }
 
     }
+
+    override fun getLayout(): Int =R.layout.activity_location_permission
 
     fun locationPermission(view:View) {
 
