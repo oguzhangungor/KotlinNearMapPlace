@@ -6,6 +6,31 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowFullscreen">true</item>
+
+    </style>
+
+    <style name="SplashLogoText">
+        <item name="android:fontFamily">@font/lemonada_bold</item>
+        <item name="android:textSize">@dimen/text_splash_logo_size</item>
+        <item name="android:textColor">@color/splash_text_color</item>
+
+    </style>
+
+    <style name="DefaultText">
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+    </style>
+
+    <style name="RegularText" parent="DefaultText">
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+    </style>
+
+    <style name="BoldText" parent="DefaultText">
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
+    </style>
+
+    <style name="MediumText" parent="DefaultText">
+        <item name="android:fontFamily">@font/ubuntu_medium</item>
     </style>
 
 </resources>

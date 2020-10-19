@@ -21,13 +21,13 @@
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_view_splash_gif"
         tools:layout_editor_absoluteX="63dp"
         android:text="@string/app_name"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        style="@style/SplashLogoText"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
