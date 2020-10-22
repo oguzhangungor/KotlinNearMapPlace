@@ -32,7 +32,7 @@ class SplashActivityPresenter(private val runTimePermissionListener: RunTimePerm
 
     override fun checkLocationPermission() {
         if (runTimePermissionListener.hasAccessFineLocation) {
-            view?.intentToMapsActivity()
+            view?.intentToMainActivity()
         } else {
             view?.intentToLocationPermissionActivity()
 

@@ -35,6 +35,8 @@ interface SplashActivityContract {
 
         fun intentToLocationPermissionActivity()
 
+        fun intentToMainActivity()
+
         fun finishCurrentActivity()
 
 
