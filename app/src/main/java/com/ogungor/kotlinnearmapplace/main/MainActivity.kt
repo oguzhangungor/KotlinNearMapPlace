@@ -20,14 +20,17 @@ class MainActivity : BaseActivity(), OnMapReadyCallback , MainActivityContract.V
 
     private lateinit var mMap: GoogleMap
 
-    lateinit var mService: IGoogleAPIService
 
-    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    lateinit var mainActivityPresenter: MainActivityContract.Presenter
 
-    internal lateinit var currentPlace: MyPlaces
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        mainActivityPresenter= MainActivityPresenter().apply {
+            setView(this@MainActivity)
+            create()
+        }
 
     }
 

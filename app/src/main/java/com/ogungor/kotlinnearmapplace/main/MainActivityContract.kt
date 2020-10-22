@@ -4,7 +4,7 @@ interface MainActivityContract {
 
     interface Presenter {
 
-        fun setView()
+        fun setView(view : View)
 
         fun create ()
 
