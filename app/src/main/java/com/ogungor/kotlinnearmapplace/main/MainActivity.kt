@@ -14,8 +14,9 @@ import com.ogungor.kotlinnearmapplace.Common.Common
 import com.ogungor.kotlinnearmapplace.Model.MyPlaces
 import com.ogungor.kotlinnearmapplace.R
 import com.ogungor.kotlinnearmapplace.Remote.IGoogleAPIService
+import com.ogungor.kotlinnearmapplace.base.BaseActivity
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback , MainActivityContract.View{
+class MainActivity : BaseActivity(), OnMapReadyCallback , MainActivityContract.View{
 
     private lateinit var mMap: GoogleMap
 
@@ -27,11 +28,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback , MainActivityContr
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+
     }
+
+    override fun getLayout(): Int =R.layout.activity_main
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
@@ -39,7 +39,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback , MainActivityContr
     }
 
     override fun initUi() {
-
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
     override fun stopLocation() {
