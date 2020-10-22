@@ -1,8 +1,11 @@
 package com.ogungor.kotlinnearmapplace.main
 
+import android.location.Location
+import com.ogungor.kotlinnearmapplace.enum.PlaceType
 
 
 class MainActivityPresenter : MainActivityContract.Presenter {
+    private var placeType:PlaceType=PlaceType.MARKET
     private var view: MainActivityContract.View?=null
     override fun setView(view : MainActivityContract.View) {
         this.view=view
@@ -18,6 +21,13 @@ class MainActivityPresenter : MainActivityContract.Presenter {
         view=null
     }
 
+    override fun locationChange(location: Location) {
+        getNearPlaces(location,placeType)
+    }
+
+    override fun getNearPlaces(location: Location, placeType: PlaceType) {
+        
+    }
 
 
 }
