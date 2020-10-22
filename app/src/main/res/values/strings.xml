@@ -6,4 +6,5 @@
         Yakın Yerleri Göstermemiz için Konum Bilgilerinize İzin Vermeniz Gerekmektedir. </string>
 
     <string name="location_permission_button">Konum İzni Ver</string>
+    <string name="title_activity_main">Map</string>
 </resources>

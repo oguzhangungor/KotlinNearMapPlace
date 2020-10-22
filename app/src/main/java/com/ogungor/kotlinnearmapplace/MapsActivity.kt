@@ -75,7 +75,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
 
         //Request runtime Permission
 
-       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkLocationPermission()) {
                 buildLocationRequest()
                 buildLocationCallBack()
@@ -98,7 +98,7 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback {
             )
         }
 
-        */
+
 
         bottom_navigator_view.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
