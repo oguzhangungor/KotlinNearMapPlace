@@ -35,6 +35,8 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
         val service=Common.googleAPIService
         val urlProvider=UrlProvider()
 
+        markerProvider=MarkerProvider()
+
         locationProvider=GmsLocationProvider(this)
 
         mainActivityPresenter = MainActivityPresenter(service,urlProvider).apply {
@@ -57,7 +59,6 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
             }
 
             override fun onFailed() {
-                TODO("Not yet implemented")
             }
 
         })
