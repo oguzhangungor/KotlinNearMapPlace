@@ -1,24 +1,20 @@
 package com.ogungor.kotlinnearmapplace.main
 
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.gms.location.FusedLocationProviderClient
-
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+
 import com.ogungor.kotlinnearmapplace.Common.Common
-import com.ogungor.kotlinnearmapplace.Model.MyPlaces
+import com.ogungor.kotlinnearmapplace.Model.Place
 import com.ogungor.kotlinnearmapplace.R
-import com.ogungor.kotlinnearmapplace.Remote.IGoogleAPIService
 import com.ogungor.kotlinnearmapplace.base.BaseActivity
+import com.ogungor.kotlinnearmapplace.enum.PlaceType
 import com.ogungor.kotlinnearmapplace.util.locationprocess.GmsLocationProvider
 import com.ogungor.kotlinnearmapplace.util.locationprocess.LocationProcessUpdateListener
 import com.ogungor.kotlinnearmapplace.util.locationprocess.LocationProvider
+import com.ogungor.kotlinnearmapplace.util.markerprocess.MarkerProvider
+import com.ogungor.kotlinnearmapplace.util.urlprocess.UrlProvider
 
 class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.View {
 
@@ -26,15 +22,22 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
 
     private var locationProvider: LocationProvider? = null
 
+    private  lateinit var markerProvider: MarkerProvider
+
+
     lateinit var mainActivityPresenter: MainActivityContract.Presenter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
+        val service=Common.googleAPIService
+        val urlProvider=UrlProvider()
 
         locationProvider=GmsLocationProvider(this)
 
-        mainActivityPresenter = MainActivityPresenter().apply {
+        mainActivityPresenter = MainActivityPresenter(service,urlProvider).apply {
             setView(this@MainActivity)
             create()
 
@@ -65,6 +68,20 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+    }
+
+    override fun showPlace(placeList: Array<Place>,placeType: PlaceType) {
+
+        for (place in placeList){
+            mMap.addMarker(markerProvider.getRelatedMarker(place,placeType))
+        }
+
+
+    }
+
+    override fun showLocation(location: Location) {
+        var latLng=LatLng(location.latitude,location.longitude)
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,14f))
     }
 
     override fun stopLocation() {

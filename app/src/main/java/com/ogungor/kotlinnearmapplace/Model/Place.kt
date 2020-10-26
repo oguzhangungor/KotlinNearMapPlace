@@ -2,7 +2,7 @@ package com.ogungor.kotlinnearmapplace.Model
 
 import Geometry
 
-class Results {
+class Place {
 
     var photos:Array<Photos>?=null
     var id:String?=null
