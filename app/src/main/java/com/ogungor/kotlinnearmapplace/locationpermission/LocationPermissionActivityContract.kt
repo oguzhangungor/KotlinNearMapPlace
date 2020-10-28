@@ -22,7 +22,7 @@ interface LocationPermissionActivityContract {
 
     interface View{
 
-        fun intentToMapsActivity()
+        fun intentToMainActivity()
 
 
 

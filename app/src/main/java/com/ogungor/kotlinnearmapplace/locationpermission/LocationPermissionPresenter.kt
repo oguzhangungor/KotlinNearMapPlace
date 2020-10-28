@@ -25,7 +25,7 @@ class LocationPermissionPresenter (private var runTimePermissionListener: RunTim
     }
 
     override fun accessFineLocationSuccess() {
-        view?.intentToMapsActivity()
+        view?.intentToMainActivity()
     }
 
     override fun accessFineLocationFailed() {

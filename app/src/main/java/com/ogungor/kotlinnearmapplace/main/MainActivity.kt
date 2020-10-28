@@ -1,7 +1,9 @@
 package com.ogungor.kotlinnearmapplace.main
 
+import android.annotation.SuppressLint
 import android.location.Location
 import android.os.Bundle
+import android.view.Menu
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 
@@ -35,7 +37,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
         val service=Common.googleAPIService
         val urlProvider=UrlProvider()
 
-        markerProvider=MarkerProvider()
+        markerProvider= MarkerProvider()
 
         locationProvider=GmsLocationProvider(this)
 
@@ -50,12 +52,14 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
 
     override fun getLayout(): Int = R.layout.activity_main
 
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
-        locationProvider?.getCurrentLocation(object : LocationProcessUpdateListener{
+        mMap.isMyLocationEnabled=true
+        locationProvider?.getLastLocation(object : LocationProcessUpdateListener{
             override fun onLocationChanged(location: Location) {
                 mainActivityPresenter.locationChange(location)
+
             }
 
             override fun onFailed() {
@@ -82,11 +86,17 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
 
     override fun showLocation(location: Location) {
         var latLng=LatLng(location.latitude,location.longitude)
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,14f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16f))
+
     }
 
     override fun stopLocation() {
 
         super.onStop()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        return super.onCreateOptionsMenu(menu)
     }
 }

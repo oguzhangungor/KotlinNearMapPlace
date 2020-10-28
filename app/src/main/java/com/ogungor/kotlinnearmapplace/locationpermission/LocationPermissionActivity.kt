@@ -9,6 +9,7 @@ import com.ogungor.kotlinnearmapplace.base.BaseActivity
 import com.ogungor.kotlinnearmapplace.splash.SplashActivityContract
 import com.ogungor.kotlinnearmapplace.util.RunTimePermissionHelper
 import com.ogungor.kotlinnearmapplace.util.RunTimePermissionListener
+import com.ogungor.kotlinnearmapplace.util.extention.startMainActivity
 import com.ogungor.kotlinnearmapplace.util.extention.startMapsActivity
 
 class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityContract.View {
@@ -55,8 +56,8 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
         locationPermissionPresenter.destroy()
     }
 
-    override fun intentToMapsActivity() {
-        startMapsActivity()
+    override fun intentToMainActivity() {
+        startMainActivity()
     }
 
 
