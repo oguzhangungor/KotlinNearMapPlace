@@ -86,8 +86,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
 
     override fun showLocation(location: Location) {
         var latLng=LatLng(location.latitude,location.longitude)
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(16f))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16f))
 
     }
 
@@ -96,7 +95,4 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
         super.onStop()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        return super.onCreateOptionsMenu(menu)
-    }
 }

@@ -58,6 +58,7 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
 
     override fun intentToMainActivity() {
         startMainActivity()
+        finish()
     }
 
 
