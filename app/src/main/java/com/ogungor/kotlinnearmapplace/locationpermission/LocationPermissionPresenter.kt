@@ -30,7 +30,7 @@ class LocationPermissionPresenter (private var runTimePermissionListener: RunTim
     }
 
     override fun accessFineLocationFailed() {
-        Log.d("fineLocation","Not Location")
+
     }
 
 

@@ -1,8 +1,11 @@
 package com.ogungor.kotlinnearmapplace.locationpermission
 
+import android.content.DialogInterface
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.ogungor.kotlinnearmapplace.R
 import com.ogungor.kotlinnearmapplace.base.BaseActivity
@@ -11,6 +14,7 @@ import com.ogungor.kotlinnearmapplace.util.RunTimePermissionHelper
 import com.ogungor.kotlinnearmapplace.util.RunTimePermissionListener
 import com.ogungor.kotlinnearmapplace.util.extention.startMainActivity
 import com.ogungor.kotlinnearmapplace.util.extention.startMapsActivity
+import java.util.jar.Manifest
 
 class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityContract.View {
 
@@ -30,9 +34,9 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
 
     }
 
-    override fun getLayout(): Int =R.layout.activity_location_permission
+    override fun getLayout(): Int = R.layout.activity_location_permission
 
-    fun locationPermission(view:View) {
+    fun locationPermission(view: View) {
 
         locationPermissionPresenter.requesPermissionClick()
 
@@ -44,12 +48,42 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == RunTimePermissionHelper.REQUEST_PERMISSION_ACCESS_FINE_LOCATION &&
-            grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
-        ){
-            locationPermissionPresenter.accessFineLocationSuccess()
+        if (requestCode == RunTimePermissionHelper.REQUEST_PERMISSION_ACCESS_FINE_LOCATION && grantResults.isNotEmpty()) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                locationPermissionPresenter.accessFineLocationSuccess()
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                   val isChosenJustDeny= shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    if(!isChosenJustDeny){
+                        AlertDialog.Builder(this).apply {
+                            setTitle("Lokasyon İzniniz Kapalı")
+                            setMessage("Size daha iyi hizmet verebilmemiz için lokasyon iznini konumlardan açınız")
+                            setPositiveButton(
+                                "Konum Aç"
+                            ) { p0, p1 ->
+
+
+                            }
+                            setNegativeButton(
+                                "Daha Sonra"
+                            ) { p0, p1 ->
+
+
+                            }
+                            show()
+                        }
+                    }
+                    else
+                    {
+                        locationPermissionPresenter.accessFineLocationFailed()
+                    }
+                }
+
+
+            }
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
