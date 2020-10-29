@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.location.Location
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -110,6 +111,10 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
 
     override fun mapClear() {
         mMap.clear()
+    }
+
+    override fun showGeneralFailedToast() {
+        Toast.makeText(this,R.string.toast_failed_message,Toast.LENGTH_LONG).show()
     }
 
 }

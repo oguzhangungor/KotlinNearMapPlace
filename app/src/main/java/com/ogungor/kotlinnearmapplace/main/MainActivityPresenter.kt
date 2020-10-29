@@ -50,7 +50,7 @@ class MainActivityPresenter(
 
             .enqueue(object : Callback<MyPlaces> {
                 override fun onFailure(call: Call<MyPlaces>, t: Throwable) {
-                    Log.d("nearPlace", t.localizedMessage)
+                    view?.showGeneralFailedToast()
                 }
 
                 override fun onResponse(call: Call<MyPlaces>, response: Response<MyPlaces>) {

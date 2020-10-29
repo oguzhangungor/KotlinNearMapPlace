@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kotlin Near Map Place</string>
+    <string name="app_name">Near Places</string>
     <string name="title_activity_maps">Near Map</string>
     <string name="title_activity_view_direction">Map</string>
     <string name="text_location_permission_message">Size Daha İyi Hizmet Verebilmek ve Sizlere
@@ -9,9 +9,9 @@
     <string name="title_activity_main">Map</string>
 
 
-    <string name="menu_hospital">Hospital</string>
-    <string name="menu_school">School</string>
-    <string name="menu_restaurant">Restaurant</string>
+    <string name="menu_hospital">Hastane</string>
+    <string name="menu_school">Okul</string>
+    <string name="menu_restaurant">Restoran</string>
     <string name="menu_market">Market</string>
 
 

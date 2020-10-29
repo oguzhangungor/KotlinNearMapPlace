@@ -35,6 +35,8 @@ interface MainActivityContract {
 
         fun mapClear()
 
+        fun showGeneralFailedToast()
+
 
     }
 
