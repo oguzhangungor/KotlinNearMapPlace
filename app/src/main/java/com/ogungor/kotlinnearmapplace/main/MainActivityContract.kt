@@ -17,17 +17,23 @@ interface MainActivityContract {
         fun locationChange(location : Location)
 
         fun getNearPlaces(location: Location, placeType: PlaceType)
+
+        fun bottomNavigationClick(itemId:Int)
     }
 
     interface View {
 
         fun initUi()
 
+        fun initListeners()
+
         fun showPlace(placeList: Array<Place>, placeType: PlaceType)
 
         fun showLocation (location: Location)
 
         fun stopLocation()
+
+        fun mapClear()
 
 
     }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import com.ogungor.kotlinnearmapplace.Common.Common
 import com.ogungor.kotlinnearmapplace.Model.Place
@@ -25,6 +26,8 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
     private var locationProvider: LocationProvider? = null
 
     private  lateinit var markerProvider: MarkerProvider
+
+    lateinit var bottomNavigator:BottomNavigationView
 
 
     lateinit var mainActivityPresenter: MainActivityContract.Presenter
@@ -70,9 +73,19 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
     }
 
     override fun initUi() {
+        bottomNavigator=findViewById(R.id.bottom_navigator_view)
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
+    }
+
+    override fun initListeners() {
+        bottomNavigator.setOnNavigationItemSelectedListener { item ->
+            mainActivityPresenter.bottomNavigationClick(item.itemId)
+            true
+        }
     }
 
     override fun showPlace(placeList: Array<Place>,placeType: PlaceType) {
@@ -93,6 +106,10 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
     override fun stopLocation() {
 
         super.onStop()
+    }
+
+    override fun mapClear() {
+        mMap.clear()
     }
 
 }

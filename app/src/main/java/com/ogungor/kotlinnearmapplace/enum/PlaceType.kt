@@ -1,6 +1,6 @@
 package com.ogungor.kotlinnearmapplace.enum
 
-enum class PlaceType(s: String) {
+enum class PlaceType(var typeValue: String) {
     MARKET("market"),
     HOSPITAL("hospital"),
     SCHOOL("school"),

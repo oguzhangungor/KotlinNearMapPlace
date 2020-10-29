@@ -1,7 +1,9 @@
 package com.ogungor.kotlinnearmapplace.main
 
 import android.location.Location
+import android.util.Log
 import com.ogungor.kotlinnearmapplace.Model.MyPlaces
+import com.ogungor.kotlinnearmapplace.R
 import com.ogungor.kotlinnearmapplace.Remote.IGoogleAPIService
 import com.ogungor.kotlinnearmapplace.enum.PlaceType
 import com.ogungor.kotlinnearmapplace.util.urlprocess.UrlProvider
@@ -10,49 +12,57 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class MainActivityPresenter(private val service:IGoogleAPIService,private val urlProvider: UrlProvider) : MainActivityContract.Presenter {
+class MainActivityPresenter(
+    private val service: IGoogleAPIService,
+    private val urlProvider: UrlProvider
+) : MainActivityContract.Presenter {
 
-    private var placeType:PlaceType=PlaceType.MARKET
+    private var placeType: PlaceType = PlaceType.MARKET
 
-    private var view: MainActivityContract.View?=null
+    private var location: Location? = null
 
-    override fun setView(view : MainActivityContract.View) {
-        this.view=view
+    private var view: MainActivityContract.View? = null
+
+    override fun setView(view: MainActivityContract.View) {
+        this.view = view
     }
 
     override fun create() {
         view?.run {
             initUi()
+            initListeners()
         }
     }
 
     override fun destroy() {
-        view=null
+        view = null
     }
 
     override fun locationChange(location: Location) {
-        getNearPlaces(location,placeType)
+        this.location = location
+        getNearPlaces(location, placeType)
     }
 
     override fun getNearPlaces(location: Location, placeType: PlaceType) {
-      val url=urlProvider.getUrl(location.latitude,location.longitude,placeType.toString())
+
+        val url = urlProvider.getUrl(location.latitude, location.longitude, placeType.typeValue)
         service.getNearbyPlaces(url)
 
-            .enqueue(object : Callback<MyPlaces>
-            {
+            .enqueue(object : Callback<MyPlaces> {
                 override fun onFailure(call: Call<MyPlaces>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.d("nearPlace", t.localizedMessage)
                 }
 
                 override fun onResponse(call: Call<MyPlaces>, response: Response<MyPlaces>) {
-                   response.body()?.results?.let { placeList ->
-                       view?.run{
-                           showPlace(placeList, placeType)
-                           showLocation(location)
-                       }
+                    response.body()?.results?.let { placeList ->
+                        view?.run {
+                            mapClear()
+                            showPlace(placeList, placeType)
+                            showLocation(location)
 
+                        }
 
-                   }
+                    }
                 }
 
 
@@ -60,8 +70,17 @@ class MainActivityPresenter(private val service:IGoogleAPIService,private val ur
             )
 
 
+    }
 
-
+    override fun bottomNavigationClick(id: Int) {
+        location?.let {
+            when (id) {
+                R.id.action_hospital -> getNearPlaces(it, PlaceType.HOSPITAL)
+                R.id.school -> getNearPlaces(it, PlaceType.SCHOOL)
+                R.id.action_market -> getNearPlaces(it, PlaceType.MARKET)
+                R.id.action_restaurant -> getNearPlaces(it, PlaceType.RESTAURANT)
+            }
+        }
     }
 
 

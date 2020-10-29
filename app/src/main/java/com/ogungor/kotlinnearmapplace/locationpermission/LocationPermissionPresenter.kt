@@ -1,5 +1,6 @@
 package com.ogungor.kotlinnearmapplace.locationpermission
 
+import android.util.Log
 import com.ogungor.kotlinnearmapplace.util.RunTimePermissionListener
 
 class LocationPermissionPresenter (private var runTimePermissionListener: RunTimePermissionListener): LocationPermissionActivityContract.Presenter{
@@ -29,7 +30,7 @@ class LocationPermissionPresenter (private var runTimePermissionListener: RunTim
     }
 
     override fun accessFineLocationFailed() {
-        TODO("Not yet implemented")
+        Log.d("fineLocation","Not Location")
     }
 
 
