@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import com.ogungor.kotlinnearmapplace.R
 import com.ogungor.kotlinnearmapplace.base.BaseActivity
 import com.ogungor.kotlinnearmapplace.util.RunTimePermissionHelper
+import com.ogungor.kotlinnearmapplace.util.extention.startAppSettings
 import com.ogungor.kotlinnearmapplace.util.extention.startMainActivity
 
 class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityContract.View {

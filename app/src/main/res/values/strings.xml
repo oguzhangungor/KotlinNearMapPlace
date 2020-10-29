@@ -17,7 +17,7 @@
 
     <string name="location_dialog_title">Lokasyon İzniniz Kapalı</string>
     <string name="location_dialog_positive_button_text">Konum Aç</string>
-    <string name="location_dialog_negative_button_text">Konum Aç</string>
+    <string name="location_dialog_negative_button_text">Daha Sonra</string>
     <string name="location_dialog_message">Size daha iyi hizmet verebilmemiz için lokasyon iznini konumlardan açınız</string>
 
 
