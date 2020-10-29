@@ -30,6 +30,7 @@ class LocationPermissionPresenter (private var runTimePermissionListener: RunTim
     }
 
     override fun accessFineLocationFailed() {
+        view?.showToastFailedMessage()
 
     }
 

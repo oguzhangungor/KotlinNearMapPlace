@@ -8,6 +8,10 @@
         <item name="android:windowFullscreen">true</item>
 
     </style>
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/persian_red</item>
+    </style>
 
     <style name="SplashLogoText">
         <item name="android:fontFamily">@font/lemonada_bold</item>

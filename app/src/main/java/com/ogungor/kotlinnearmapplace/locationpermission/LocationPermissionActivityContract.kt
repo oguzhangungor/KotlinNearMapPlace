@@ -17,12 +17,15 @@ interface LocationPermissionActivityContract {
         fun accessFineLocationFailed()
 
 
+
     }
 
 
     interface View{
 
         fun intentToMainActivity()
+
+        fun showToastFailedMessage()
 
 
 

@@ -1,20 +1,15 @@
 package com.ogungor.kotlinnearmapplace.locationpermission
 
-import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import com.ogungor.kotlinnearmapplace.R
 import com.ogungor.kotlinnearmapplace.base.BaseActivity
-import com.ogungor.kotlinnearmapplace.splash.SplashActivityContract
 import com.ogungor.kotlinnearmapplace.util.RunTimePermissionHelper
-import com.ogungor.kotlinnearmapplace.util.RunTimePermissionListener
 import com.ogungor.kotlinnearmapplace.util.extention.startMainActivity
-import com.ogungor.kotlinnearmapplace.util.extention.startMapsActivity
-import java.util.jar.Manifest
 
 class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityContract.View {
 
@@ -53,28 +48,27 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
                 locationPermissionPresenter.accessFineLocationSuccess()
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                   val isChosenJustDeny= shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)
-                    if(!isChosenJustDeny){
-                        AlertDialog.Builder(this).apply {
-                            setTitle("Lokasyon İzniniz Kapalı")
-                            setMessage("Size daha iyi hizmet verebilmemiz için lokasyon iznini konumlardan açınız")
+                    val isChosenJustDeny =
+                        shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    if (!isChosenJustDeny) {
+                        AlertDialog.Builder(this, R.style.MyAlertDialogStyle).apply {
+                            setTitle(R.string.location_dialog_title)
+                            setMessage(R.string.location_dialog_message)
                             setPositiveButton(
-                                "Konum Aç"
+                                R.string.location_dialog_positive_button_text
                             ) { p0, p1 ->
-
-
+                                startAppSettings()
                             }
+
                             setNegativeButton(
-                                "Daha Sonra"
+                                R.string.location_dialog_negative_button_text
                             ) { p0, p1 ->
-
-
+                                locationPermissionPresenter.accessFineLocationFailed()
                             }
                             show()
+
                         }
-                    }
-                    else
-                    {
+                    } else {
                         locationPermissionPresenter.accessFineLocationFailed()
                     }
                 }
@@ -82,6 +76,10 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
 
             }
         }
+    }
+
+    override fun showToastFailedMessage() {
+        Toast.makeText(this, R.string.toast_failed_message, Toast.LENGTH_LONG).show()
     }
 
 
@@ -94,6 +92,5 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
         startMainActivity()
         finish()
     }
-
 
 }
