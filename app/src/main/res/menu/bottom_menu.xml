@@ -5,28 +5,28 @@
         android:id="@+id/action_market"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:title="Market"
+        android:title="@string/menu_market"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/school"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_school_24"
-        android:title="School"
+        android:title="@string/menu_school"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_restaurant"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_restaurant_24"
-        android:title="Restaurant"
+        android:title="@string/menu_restaurant"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_hospital"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_local_hospital_24"
-        android:title="Hospital"
+        android:title="@string/menu_hospital"
         app:showAsAction="ifRoom" />
 
 </menu>

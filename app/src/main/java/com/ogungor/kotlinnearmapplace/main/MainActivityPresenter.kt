@@ -74,12 +74,14 @@ class MainActivityPresenter(
 
     override fun bottomNavigationClick(id: Int) {
         location?.let {
-            when (id) {
-                R.id.action_hospital -> getNearPlaces(it, PlaceType.HOSPITAL)
-                R.id.school -> getNearPlaces(it, PlaceType.SCHOOL)
-                R.id.action_market -> getNearPlaces(it, PlaceType.MARKET)
-                R.id.action_restaurant -> getNearPlaces(it, PlaceType.RESTAURANT)
+            var placeType = when (id) {
+                R.id.action_hospital -> PlaceType.HOSPITAL
+                R.id.school -> PlaceType.SCHOOL
+                R.id.action_market -> PlaceType.MARKET
+                R.id.action_restaurant -> PlaceType.RESTAURANT
+                else -> PlaceType.RESTAURANT
             }
+            getNearPlaces(it, placeType)
         }
     }
 
