@@ -20,22 +20,18 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location_permission)
 
-        var runTimePermissionListener = RunTimePermissionHelper(this)
+        val runTimePermissionListener = RunTimePermissionHelper(this)
 
         locationPermissionPresenter = LocationPermissionPresenter(runTimePermissionListener).apply {
             setView(this@LocationPermissionActivity)
             create()
-
         }
-
     }
 
     override fun getLayout(): Int = R.layout.activity_location_permission
 
     fun locationPermission(view: View) {
-
         locationPermissionPresenter.requesPermissionClick()
-
     }
 
     override fun onRequestPermissionsResult(
@@ -52,29 +48,11 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
                     val isChosenJustDeny =
                         shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)
                     if (!isChosenJustDeny) {
-                        AlertDialog.Builder(this, R.style.MyAlertDialogStyle).apply {
-                            setTitle(R.string.location_dialog_title)
-                            setMessage(R.string.location_dialog_message)
-                            setPositiveButton(
-                                R.string.location_dialog_positive_button_text
-                            ) { p0, p1 ->
-                                startAppSettings()
-                            }
-
-                            setNegativeButton(
-                                R.string.location_dialog_negative_button_text
-                            ) { p0, p1 ->
-                                locationPermissionPresenter.accessFineLocationFailed()
-                            }
-                            show()
-
-                        }
+                        showLocationPermissionDialog()
                     } else {
                         locationPermissionPresenter.accessFineLocationFailed()
                     }
                 }
-
-
             }
         }
     }
@@ -82,7 +60,6 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
     override fun showToastFailedMessage() {
         Toast.makeText(this, R.string.toast_failed_message, Toast.LENGTH_LONG).show()
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -94,4 +71,21 @@ class LocationPermissionActivity : BaseActivity(), LocationPermissionActivityCon
         finish()
     }
 
+    override fun showLocationPermissionDialog() {
+        AlertDialog.Builder(this, R.style.MyAlertDialogStyle).apply {
+            setTitle(R.string.location_dialog_title)
+            setMessage(R.string.location_dialog_message)
+            setPositiveButton(
+                R.string.location_dialog_positive_button_text
+            ) { p0, p1 ->
+                startAppSettings()
+            }
+            setNegativeButton(
+                R.string.location_dialog_negative_button_text
+            ) { p0, p1 ->
+                locationPermissionPresenter.accessFineLocationFailed()
+            }
+            show()
+        }
+    }
 }

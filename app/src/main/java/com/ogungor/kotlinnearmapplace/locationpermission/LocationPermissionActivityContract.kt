@@ -27,8 +27,7 @@ interface LocationPermissionActivityContract {
 
         fun showToastFailedMessage()
 
-
-
+        fun showLocationPermissionDialog()
 
 
     }
