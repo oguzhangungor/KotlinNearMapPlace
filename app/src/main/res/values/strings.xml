@@ -25,6 +25,9 @@
 
 
     <string name="toast_failed_message">Şu an işleminizi gerçekleştiremiyoruz.</string>
+    <string name="toast_empyt_near_message">Etrafınızda %1$s bulunmamaktadır</string>
+
+
 
 
 </resources>
