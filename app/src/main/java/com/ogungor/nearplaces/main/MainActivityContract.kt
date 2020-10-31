@@ -1,7 +1,7 @@
 package com.ogungor.nearplaces.main
 
 import android.location.Location
-import com.ogungor.nearplaces.Model.Place
+import com.ogungor.nearplaces.model.Place
 import com.ogungor.nearplaces.enum.PlaceType
 
 interface MainActivityContract {

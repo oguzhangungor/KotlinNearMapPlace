@@ -31,7 +31,7 @@
         <activity
             android:name="com.ogungor.nearplaces.main.MainActivity"
             android:label="@string/title_activity_main"></activity>
-        <activity android:name="com.ogungor.nearplaces.Model.PlaceDetail" />
+        <activity android:name="com.ogungor.nearplaces.model.PlaceDetail" />
         <activity android:name="com.ogungor.nearplaces.ViewDirectionActivity" />
         <activity android:name="com.ogungor.nearplaces.ViewPlaceActivity" />
         <activity android:name="com.ogungor.nearplaces.locationpermission.LocationPermissionActivity" />

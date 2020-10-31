@@ -1,9 +1,9 @@
 package com.ogungor.nearplaces.main
 
 import android.location.Location
-import com.ogungor.nearplaces.Model.MyPlaces
+import com.ogungor.nearplaces.model.MyPlaces
 import com.ogungor.nearplaces.R
-import com.ogungor.nearplaces.Remote.IGoogleAPIService
+import com.ogungor.nearplaces.remote.IGoogleAPIService
 import com.ogungor.nearplaces.enum.PlaceType
 import com.ogungor.nearplaces.util.urlprocess.UrlProvider
 import retrofit2.Call
@@ -54,9 +54,9 @@ class MainActivityPresenter(
 
                 override fun onResponse(call: Call<MyPlaces>, response: Response<MyPlaces>) {
                     response.body()?.results?.let { placeList ->
-                        if(placeList.isEmpty()){
+                        if (placeList.isEmpty()) {
                             view?.emptyNearPlace(placeType)
-                        }else{
+                        } else {
                             view?.run {
                                 mapClear()
                                 showPlace(placeList, placeType)
@@ -85,7 +85,8 @@ class MainActivityPresenter(
                 R.id.action_restaurant -> PlaceType.RESTORAN
                 else -> PlaceType.RESTORAN
             }
-            getNearPlaces(it, placeType)
+            this.placeType = placeType
+            getNearPlaces(it, this.placeType)
         }
     }
 

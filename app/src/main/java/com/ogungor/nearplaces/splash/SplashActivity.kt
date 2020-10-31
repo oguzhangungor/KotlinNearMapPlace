@@ -9,7 +9,6 @@ import com.ogungor.nearplaces.base.BaseActivity
 import com.ogungor.nearplaces.util.RunTimePermissionHelper
 import com.ogungor.nearplaces.util.extention.startLocationPermissionActivity
 import com.ogungor.nearplaces.util.extention.startMainActivity
-import com.ogungor.nearplaces.util.extention.startMapsActivity
 
 class SplashActivity : BaseActivity(), SplashActivityContract.View {
 
@@ -59,9 +58,6 @@ class SplashActivity : BaseActivity(), SplashActivityContract.View {
         },MS_HANDLER_DELAY_TIME)
     }
 
-    override fun intentToMapsActivity() {
-        this.startMapsActivity()
-    }
 
     override fun intentToLocationPermissionActivity() {
         this.startLocationPermissionActivity()

@@ -8,8 +8,8 @@ import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-import com.ogungor.nearplaces.Common.Common
-import com.ogungor.nearplaces.Model.Place
+import com.ogungor.nearplaces.common.Common
+import com.ogungor.nearplaces.model.Place
 import com.ogungor.nearplaces.R
 import com.ogungor.nearplaces.base.BaseActivity
 import com.ogungor.nearplaces.enum.PlaceType

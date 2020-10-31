@@ -4,7 +4,7 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.ogungor.nearplaces.Model.Place
+import com.ogungor.nearplaces.model.Place
 import com.ogungor.nearplaces.R
 import com.ogungor.nearplaces.enum.PlaceType
 import com.ogungor.nearplaces.enum.PlaceType.*

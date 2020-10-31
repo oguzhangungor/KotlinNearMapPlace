@@ -31,8 +31,6 @@ interface SplashActivityContract {
 
         fun startHandler()
 
-        fun intentToMapsActivity()
-
         fun intentToLocationPermissionActivity()
 
         fun intentToMainActivity()

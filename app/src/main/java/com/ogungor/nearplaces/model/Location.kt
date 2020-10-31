@@ -1,4 +1,4 @@
-package com.ogungor.nearplaces.Model
+package com.ogungor.nearplaces.model
 
 class Location {
 

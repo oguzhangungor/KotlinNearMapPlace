@@ -1,9 +1,9 @@
-package com.ogungor.nearplaces.Common
+package com.ogungor.nearplaces.common
 
-import com.ogungor.nearplaces.Model.Place
-import com.ogungor.nearplaces.Remote.IGoogleAPIService
-import com.ogungor.nearplaces.Remote.RetrofitClient
-import com.ogungor.nearplaces.Remote.RetrofitScalarsClient
+import com.ogungor.nearplaces.model.Place
+import com.ogungor.nearplaces.remote.IGoogleAPIService
+import com.ogungor.nearplaces.remote.RetrofitClient
+import com.ogungor.nearplaces.remote.RetrofitScalarsClient
 
 object Common {
 
