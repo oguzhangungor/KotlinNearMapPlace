@@ -5,6 +5,7 @@ import android.content.Context
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.os.Bundle
 import com.google.android.gms.location.LocationServices
 import com.ogungor.nearplaces.base.BaseActivity
 
@@ -34,21 +35,37 @@ class GmsLocationProvider(private val activity: BaseActivity) : LocationProvider
             override fun onLocationChanged(p0: Location) {
                 locationProcessUpdateListener.onLocationChanged(p0)
             }
+
+            override fun onProviderDisabled(provider: String) {
+                //Silence is golden
+            }
+
+            override fun onProviderEnabled(provider: String) {
+                //Silence is golden
+            }
+
+            override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+                //Silence is golden
+            }
         }
-        locationManager.requestLocationUpdates(
-            LocationManager.GPS_PROVIDER,
-            LOCATION_REFRESH_TIME,
-            LOCATION_REFRESH_DISTANCE,
-            locationListener
-        )
 
-        locationManager.requestLocationUpdates(
-            LocationManager.NETWORK_PROVIDER,
-            LOCATION_REFRESH_TIME,
-            LOCATION_REFRESH_DISTANCE,
-            locationListener
-        )
+        if (locationManager.allProviders.contains(LocationManager.GPS_PROVIDER)) {
+            locationManager.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER,
+                LOCATION_REFRESH_TIME,
+                LOCATION_REFRESH_DISTANCE,
+                locationListener
+            )
+        }
 
+        if (locationManager.allProviders.contains(LocationManager.NETWORK_PROVIDER)) {
+            locationManager.requestLocationUpdates(
+                LocationManager.NETWORK_PROVIDER,
+                LOCATION_REFRESH_TIME,
+                LOCATION_REFRESH_DISTANCE,
+                locationListener
+            )
+        }
 
     }
 }

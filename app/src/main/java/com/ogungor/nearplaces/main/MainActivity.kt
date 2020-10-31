@@ -69,7 +69,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
         mMap = googleMap
         disableMap()
         mMap.isMyLocationEnabled=true
-        locationProvider?.getLastLocation(object : LocationProcessUpdateListener{
+        locationProvider?.getCurrentLocation(object : LocationProcessUpdateListener{
             override fun onLocationChanged(location: Location) {
                 mainActivityPresenter.locationChange(location)
 
