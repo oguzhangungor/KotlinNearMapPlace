@@ -43,6 +43,10 @@ interface MainActivityContract {
 
         fun hideProgress()
 
+        fun enableMap()
+
+        fun disableMap()
+
 
     }
 

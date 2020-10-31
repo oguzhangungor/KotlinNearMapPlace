@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".main.MainActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
 
     <fragment
         android:id="@+id/map"
@@ -29,5 +24,18 @@
         app:itemIconTint="@drawable/nav_selector"
         app:itemTextColor="@drawable/nav_selector"
         app:menu="@menu/bottom_menu" />
+
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lottie_autoPlay="true"
+        app:lottie_speed="4"
+        app:lottie_fileName="watch_progress.json"
+        app:lottie_loop="true"
+        android:layout_centerInParent="true" />
+
 
 </RelativeLayout>

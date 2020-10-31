@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -32,7 +33,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
 
     lateinit var bottomNavigator:BottomNavigationView
 
-    lateinit var progressBar: ProgressBar
+    lateinit var progressBar: LottieAnimationView
 
 
     lateinit var mainActivityPresenter: MainActivityContract.Presenter
@@ -63,8 +64,9 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        disableMap()
         mMap.isMyLocationEnabled=true
-        locationProvider?.getCurrentLocation(object : LocationProcessUpdateListener{
+        locationProvider?.getLastLocation(object : LocationProcessUpdateListener{
             override fun onLocationChanged(location: Location) {
                 mainActivityPresenter.locationChange(location)
 
@@ -75,6 +77,15 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
             }
 
         })
+
+    }
+
+    override fun enableMap() {
+        mMap.uiSettings.setAllGesturesEnabled(true)
+    }
+
+    override fun disableMap() {
+        mMap.uiSettings.setAllGesturesEnabled(false)
 
     }
 

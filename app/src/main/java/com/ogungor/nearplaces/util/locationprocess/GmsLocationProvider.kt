@@ -42,6 +42,13 @@ class GmsLocationProvider(private val activity: BaseActivity) : LocationProvider
             locationListener
         )
 
+        locationManager.requestLocationUpdates(
+            LocationManager.NETWORK_PROVIDER,
+            LOCATION_REFRESH_TIME,
+            LOCATION_REFRESH_DISTANCE,
+            locationListener
+        )
+
 
     }
 }

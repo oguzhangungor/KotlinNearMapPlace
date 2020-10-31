@@ -44,6 +44,7 @@ class MainActivityPresenter(
 
     override fun getNearPlaces(location: Location, placeType: PlaceType) {
         view?.showProgress()
+        view?.disableMap()
         val url = urlProvider.getUrl(location.latitude, location.longitude, placeType.typeValue)
         service.getNearbyPlaces(url)
 
@@ -51,13 +52,17 @@ class MainActivityPresenter(
                 override fun onFailure(call: Call<MyPlaces>, t: Throwable) {
                     view?.run {
                         hideProgress()
+                        enableMap()
                         showGeneralFailedToast()
                     }
                 }
 
                 override fun onResponse(call: Call<MyPlaces>, response: Response<MyPlaces>) {
                     response.body()?.results?.let { placeList ->
-                        view?.hideProgress()
+                        view?.run {
+                            hideProgress()
+                            enableMap()
+                        }
                         if (placeList.isEmpty()) {
                             view?.showEmptyToast(placeType)
                         } else {
