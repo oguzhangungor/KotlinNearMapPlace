@@ -5,6 +5,7 @@ import android.location.Location
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.RelativeLayout
 import android.widget.Toast
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.maps.*
@@ -33,7 +34,9 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
 
     lateinit var bottomNavigator:BottomNavigationView
 
-    lateinit var progressBar: LottieAnimationView
+    lateinit var progressBar: RelativeLayout
+
+    lateinit var lottieView: LottieAnimationView
 
 
     lateinit var mainActivityPresenter: MainActivityContract.Presenter
@@ -92,6 +95,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
     override fun initUi() {
         bottomNavigator=findViewById(R.id.bottom_navigator_view)
         progressBar=findViewById(R.id.progressBar)
+        lottieView=findViewById(R.id.lottieView)
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -104,10 +108,12 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
     }
 
     override fun showProgress() {
+        lottieView.playAnimation()
         progressBar.visibility=View.VISIBLE
     }
 
     override fun hideProgress() {
+        lottieView.pauseAnimation()
         progressBar.visibility=View.GONE
 
     }

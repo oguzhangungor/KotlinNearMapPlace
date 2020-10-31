@@ -27,15 +27,35 @@
 
 
 
-    <com.airbnb.lottie.LottieAnimationView
+
+
+    <RelativeLayout
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:lottie_autoPlay="true"
-        app:lottie_speed="4"
-        app:lottie_fileName="watch_progress.json"
-        app:lottie_loop="true"
-        android:layout_centerInParent="true" />
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigator_view"
+        android:background="#50ffffff"
+        android:gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_centerInParent="true"
+            app:cardCornerRadius="64dp">
+
+        </androidx.cardview.widget.CardView>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieView"
+            android:layout_width="172dp"
+            android:layout_height="172dp"
+            android:layout_centerInParent="true"
+            android:elevation="8dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="location.json"
+            app:lottie_loop="true"
+            app:lottie_speed="4" />
+    </RelativeLayout>
 
 
 </RelativeLayout>
