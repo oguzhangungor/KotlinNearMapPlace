@@ -30,9 +30,9 @@ class MarkerProvider {
     private fun getRelatedMarkerIcon(placeType: PlaceType): BitmapDescriptor {
         return when (placeType) {
             MARKET -> BitmapDescriptorFactory.fromResource(R.drawable.ic_shopping)
-            HOSPITAL -> BitmapDescriptorFactory.fromResource(R.drawable.ic_hospital)
-            SCHOOL -> BitmapDescriptorFactory.fromResource(R.drawable.ic_school)
-            RESTAURANT -> BitmapDescriptorFactory.fromResource(R.drawable.ic_restaurant)
+            HASTANE -> BitmapDescriptorFactory.fromResource(R.drawable.ic_hospital)
+            OKUL -> BitmapDescriptorFactory.fromResource(R.drawable.ic_school)
+            RESTORAN -> BitmapDescriptorFactory.fromResource(R.drawable.ic_restaurant)
         }
 
 

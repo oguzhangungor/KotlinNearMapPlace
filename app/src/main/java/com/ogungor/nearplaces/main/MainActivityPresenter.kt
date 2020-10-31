@@ -54,7 +54,7 @@ class MainActivityPresenter(
 
                 override fun onResponse(call: Call<MyPlaces>, response: Response<MyPlaces>) {
                     response.body()?.results?.let { placeList ->
-                        if(placeList.size==0){
+                        if(placeList.isEmpty()){
                             view?.emptyNearPlace(placeType)
                         }else{
                             view?.run {
@@ -79,11 +79,11 @@ class MainActivityPresenter(
     override fun bottomNavigationClick(id: Int) {
         location?.let {
             var placeType = when (id) {
-                R.id.action_hospital -> PlaceType.HOSPITAL
-                R.id.school -> PlaceType.SCHOOL
+                R.id.action_hospital -> PlaceType.HASTANE
+                R.id.school -> PlaceType.OKUL
                 R.id.action_market -> PlaceType.MARKET
-                R.id.action_restaurant -> PlaceType.RESTAURANT
-                else -> PlaceType.RESTAURANT
+                R.id.action_restaurant -> PlaceType.RESTORAN
+                else -> PlaceType.RESTORAN
             }
             getNearPlaces(it, placeType)
         }
