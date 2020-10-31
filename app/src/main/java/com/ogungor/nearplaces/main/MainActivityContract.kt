@@ -37,7 +37,11 @@ interface MainActivityContract {
 
         fun showGeneralFailedToast()
 
-        fun emptyNearPlace(placeType: PlaceType)
+        fun showEmptyToast(placeType: PlaceType)
+
+        fun showProgress()
+
+        fun hideProgress()
 
 
     }

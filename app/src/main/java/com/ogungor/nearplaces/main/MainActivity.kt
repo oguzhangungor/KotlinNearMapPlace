@@ -3,6 +3,8 @@ package com.ogungor.nearplaces.main
 import android.annotation.SuppressLint
 import android.location.Location
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
@@ -13,6 +15,7 @@ import com.ogungor.nearplaces.model.Place
 import com.ogungor.nearplaces.R
 import com.ogungor.nearplaces.base.BaseActivity
 import com.ogungor.nearplaces.enum.PlaceType
+import com.ogungor.nearplaces.util.extention.showToast
 import com.ogungor.nearplaces.util.locationprocess.GmsLocationProvider
 import com.ogungor.nearplaces.util.locationprocess.LocationProcessUpdateListener
 import com.ogungor.nearplaces.util.locationprocess.LocationProvider
@@ -28,6 +31,8 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
     private  lateinit var markerProvider: MarkerProvider
 
     lateinit var bottomNavigator:BottomNavigationView
+
+    lateinit var progressBar: ProgressBar
 
 
     lateinit var mainActivityPresenter: MainActivityContract.Presenter
@@ -75,10 +80,24 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
 
     override fun initUi() {
         bottomNavigator=findViewById(R.id.bottom_navigator_view)
+        progressBar=findViewById(R.id.progressBar)
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+
+
+
+
+    }
+
+    override fun showProgress() {
+        progressBar.visibility=View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressBar.visibility=View.GONE
 
     }
 
@@ -114,12 +133,12 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
     }
 
     override fun showGeneralFailedToast() {
-        Toast.makeText(this,R.string.toast_failed_message,Toast.LENGTH_LONG).show()
+       showToast(getString(R.string.toast_failed_message))
     }
 
-    @SuppressLint("StringFormatMatches")
-    override fun emptyNearPlace(placeType: PlaceType) {
-        Toast.makeText(this,resources.getString(R.string.toast_empyt_near_message,placeType),Toast.LENGTH_LONG).show()
+    override fun showEmptyToast(placeType: PlaceType) {
+        showToast(getString(R.string.toast_empty_near_message,placeType.typeValue))
+
     }
 
 }
