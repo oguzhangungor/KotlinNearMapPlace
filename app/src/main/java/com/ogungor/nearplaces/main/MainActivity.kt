@@ -154,7 +154,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
     }
 
     override fun showEmptyToast(placeType: PlaceType) {
-        showToast(getString(R.string.toast_empty_near_message,placeType.typeValue))
+        showToast(getString(R.string.toast_empty_near_message,placeType.toString()))
 
     }
 
