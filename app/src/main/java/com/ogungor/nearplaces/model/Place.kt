@@ -3,8 +3,6 @@ package com.ogungor.nearplaces.model
 import Geometry
 
 class Place {
-
-
     var id: String? = null
     var place_id: String? = null
     var price_level: Int = 0

@@ -11,7 +11,6 @@ import com.ogungor.nearplaces.base.BaseActivity
 
 class GmsLocationProvider(private val activity: BaseActivity) : LocationProvider {
 
-
     private var locationManager: LocationManager =
         activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
     val LOCATION_REFRESH_TIME = 10000L
@@ -66,6 +65,5 @@ class GmsLocationProvider(private val activity: BaseActivity) : LocationProvider
                 locationListener
             )
         }
-
     }
 }

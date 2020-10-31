@@ -12,29 +12,20 @@ import com.ogungor.nearplaces.util.extention.startMainActivity
 
 class SplashActivity : BaseActivity(), SplashActivityContract.View {
 
-    private val MS_HANDLER_DELAY_TIME=4000L
-
+    private val MS_HANDLER_DELAY_TIME = 4000L
     private lateinit var splashActivityPresenter: SplashActivityContract.Presenter
-
-    private lateinit var  imageViewSplashGif: ImageView
-
-
-
+    private lateinit var imageViewSplashGif: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_splash)
-
-        val runTimePermissionListener=RunTimePermissionHelper(this)
-
+        val runTimePermissionListener = RunTimePermissionHelper(this)
         splashActivityPresenter = SplashActivityPresenter(runTimePermissionListener).apply {
             setView(this@SplashActivity)
             create()
         }
-
-
     }
-
-    override fun getLayout(): Int =R.layout.activity_splash
+    override fun getLayout(): Int = R.layout.activity_splash
 
     override fun onDestroy() {
         super.onDestroy()
@@ -42,7 +33,7 @@ class SplashActivity : BaseActivity(), SplashActivityContract.View {
     }
 
     override fun initUi() {
-        imageViewSplashGif=findViewById(R.id.image_view_splash_gif)
+        imageViewSplashGif = findViewById(R.id.image_view_splash_gif)
     }
 
     override fun startGifAnim() {
@@ -50,14 +41,10 @@ class SplashActivity : BaseActivity(), SplashActivityContract.View {
     }
 
     override fun startHandler() {
-
         Handler().postDelayed({
             splashActivityPresenter.handlerFinished()
-
-
-        },MS_HANDLER_DELAY_TIME)
+        }, MS_HANDLER_DELAY_TIME)
     }
-
 
     override fun intentToLocationPermissionActivity() {
         this.startLocationPermissionActivity()
@@ -67,9 +54,7 @@ class SplashActivity : BaseActivity(), SplashActivityContract.View {
         this.startMainActivity()
     }
 
-
     override fun finishCurrentActivity() {
         this.finish()
     }
-
 }

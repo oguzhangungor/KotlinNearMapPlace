@@ -11,23 +11,22 @@
         android:layout_width="@dimen/splash_gif_size"
         android:layout_height="@dimen/splash_gif_size"
         app:layout_constraintBottom_toTopOf="@+id/app_name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/loc" />
 
     <TextView
         android:id="@+id/app_name"
+        style="@style/SplashLogoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view_splash_gif"
-        tools:layout_editor_absoluteX="63dp"
         android:text="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        style="@style/SplashLogoText"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/image_view_splash_gif"
+        tools:layout_editor_absoluteX="63dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

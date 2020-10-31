@@ -5,6 +5,4 @@ interface RunTimePermissionListener {
     val hasAccessFineLocation: Boolean
 
     fun getAccessFineLocationPermission()
-
-
 }

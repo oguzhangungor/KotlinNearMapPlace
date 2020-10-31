@@ -6,8 +6,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowFullscreen">true</item>
-
     </style>
+
     <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!-- Used for the buttons -->
         <item name="colorAccent">@color/persian_red</item>
@@ -17,7 +17,6 @@
         <item name="android:fontFamily">@font/lemonada_bold</item>
         <item name="android:textSize">@dimen/text_splash_logo_size</item>
         <item name="android:textColor">@color/splash_text_color</item>
-
     </style>
 
     <style name="DefaultText">
@@ -41,7 +40,5 @@
         <item name="android:gravity">center</item>
         <item name="android:windowTitleSize">@dimen/text_large</item>
         <item name="android:textColor">@color/grey</item>
-
     </style>
-
 </resources>

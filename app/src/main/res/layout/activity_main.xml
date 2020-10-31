@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".main.MainActivity">
 
-
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -25,37 +24,30 @@
         app:itemTextColor="@drawable/nav_selector"
         app:menu="@menu/bottom_menu" />
 
-
-
-
-
     <RelativeLayout
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_navigator_view"
-        android:background="#50ffffff"
+        android:background="@color/loading_bg_color"
         android:gravity="center">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="128dp"
-            android:layout_height="128dp"
+            android:layout_width="@dimen/loading_card_view_item_size"
+            android:layout_height="@dimen/loading_card_view_item_size"
             android:layout_centerInParent="true"
-            app:cardCornerRadius="64dp">
-
-        </androidx.cardview.widget.CardView>
+            app:cardCornerRadius="@dimen/loading_card_view_radius" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieView"
-            android:layout_width="172dp"
-            android:layout_height="172dp"
+            android:layout_width="@dimen/loading_lottie_view_item_size"
+            android:layout_height="@dimen/loading_lottie_view_item_size"
             android:layout_centerInParent="true"
-            android:elevation="8dp"
+            android:elevation="@dimen/lottie_view_elevation"
             app:lottie_autoPlay="true"
             app:lottie_fileName="location.json"
             app:lottie_loop="true"
             app:lottie_speed="4" />
     </RelativeLayout>
-
 
 </RelativeLayout>

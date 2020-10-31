@@ -15,9 +15,6 @@ interface LocationPermissionActivityContract {
         fun accessFineLocationSuccess()
 
         fun accessFineLocationFailed()
-
-
-
     }
 
 
@@ -28,7 +25,5 @@ interface LocationPermissionActivityContract {
         fun showToastFailedMessage()
 
         fun showLocationPermissionDialog()
-
-
     }
 }

@@ -2,36 +2,32 @@
 <resources>
 
     <dimen name="splash_gif_size">256dp</dimen>
+
     <!-- Text Size  -->
-
     <dimen name="text_splash_logo_size">22sp</dimen>
-
     <dimen name="text_small">12sp</dimen>
     <dimen name="default_text_size">14sp</dimen>
     <dimen name="text_medium">16sp</dimen>
     <dimen name="text_large">18sp</dimen>
 
     <dimen name="map_location_icon_size">240dp</dimen>
-
+    <dimen name="loading_card_view_item_size">128dp</dimen>
+    <dimen name="loading_lottie_view_item_size">172dp</dimen>
 
     <!-- Margin Size -->
-
     <dimen name="margin_small">12dp</dimen>
     <dimen name="margin_normal">16dp</dimen>
     <dimen name="margin_large">20dp</dimen>
 
-
     <!-- Radius Size-->
     <dimen name="default_radius">4dp</dimen>
-
+    <dimen name="loading_card_view_radius">64dp</dimen>
 
     <!-- Padding Size-->
     <dimen name="padding_8">8dp</dimen>
     <dimen name="padding_4">4dp</dimen>
     <dimen name="padding_24">24dp</dimen>
 
-
-
-
-
+    <!-- Elevation -->
+    <dimen name="lottie_view_elevation">8dp</dimen>
 </resources>

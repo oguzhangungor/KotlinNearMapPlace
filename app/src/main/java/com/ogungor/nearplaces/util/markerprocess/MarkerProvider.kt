@@ -11,7 +11,6 @@ import com.ogungor.nearplaces.enum.PlaceType.*
 
 class MarkerProvider {
 
-
     fun getRelatedMarker(place: Place, placeType: PlaceType): MarkerOptions {
 
         val lat = place.geometry?.location?.lat!!
@@ -24,7 +23,6 @@ class MarkerProvider {
             icon(getRelatedMarkerIcon(placeType))
             snippet(placeType.toString())
         }
-
     }
 
     private fun getRelatedMarkerIcon(placeType: PlaceType): BitmapDescriptor {
@@ -34,7 +32,5 @@ class MarkerProvider {
             OKUL -> BitmapDescriptorFactory.fromResource(R.drawable.ic_school)
             RESTORAN -> BitmapDescriptorFactory.fromResource(R.drawable.ic_restaurant)
         }
-
-
     }
 }

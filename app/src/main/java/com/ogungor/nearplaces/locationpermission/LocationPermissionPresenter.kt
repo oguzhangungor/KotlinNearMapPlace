@@ -7,13 +7,11 @@ class LocationPermissionPresenter (private var runTimePermissionListener: RunTim
     private var view:LocationPermissionActivityContract.View?=null
 
     override fun setView(view: LocationPermissionActivityContract.View) {
-
         this.view=view
     }
 
     override fun create() {
-
-
+        //Silence is Golden
     }
 
     override fun destroy() {
@@ -30,8 +28,5 @@ class LocationPermissionPresenter (private var runTimePermissionListener: RunTim
 
     override fun accessFineLocationFailed() {
         view?.showToastFailedMessage()
-
     }
-
-
 }

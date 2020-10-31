@@ -1,23 +1,18 @@
 <resources>
-    <string name="app_name">Near Places</string>
-    <string name="title_activity_maps">Near Map</string>
-    <string name="title_activity_view_direction">Map</string>
+
+    <string name="app_name">Yakınımdakiler</string>
     <string name="text_location_permission_message">Size Daha İyi Hizmet Verebilmek ve Sizlere
         Yakın Yerleri Göstermemiz için Konum Bilgilerinize İzin Vermeniz Gerekmektedir. </string>
-
     <string name="location_permission_button">Konum İzni Ver</string>
     <string name="title_activity_main">Map</string>
-
     <string name="menu_hospital">Hastane</string>
     <string name="menu_school">Okul</string>
     <string name="menu_restaurant">Restoran</string>
     <string name="menu_market">Market</string>
-
     <string name="location_dialog_title">Lokasyon İzniniz Kapalı</string>
     <string name="location_dialog_positive_button_text">Konum Aç</string>
     <string name="location_dialog_negative_button_text">Daha Sonra</string>
     <string name="location_dialog_message">Size daha iyi hizmet verebilmemiz için lokasyon iznini konumlardan açınız</string>
-
     <string name="toast_failed_message">Şu an işleminizi gerçekleştiremiyoruz.</string>
     <string name="toast_empty_near_message">Etrafınızda %1$s bulunmamaktadır</string>
 

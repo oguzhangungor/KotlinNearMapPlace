@@ -5,7 +5,5 @@ import android.location.Location
 interface LocationProcessUpdateListener {
 
     fun onLocationChanged(location: Location)
-
-
     fun onFailed()
 }

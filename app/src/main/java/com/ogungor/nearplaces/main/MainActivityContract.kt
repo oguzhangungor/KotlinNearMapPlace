@@ -31,8 +31,6 @@ interface MainActivityContract {
 
         fun showLocation (location: Location)
 
-        fun stopLocation()
-
         fun mapClear()
 
         fun showGeneralFailedToast()
@@ -46,9 +44,5 @@ interface MainActivityContract {
         fun enableMap()
 
         fun disableMap()
-
-
     }
-
-
 }

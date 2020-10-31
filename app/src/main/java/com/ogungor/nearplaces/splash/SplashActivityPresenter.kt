@@ -4,8 +4,6 @@ import com.ogungor.nearplaces.util.RunTimePermissionListener
 
 class SplashActivityPresenter(private val runTimePermissionListener: RunTimePermissionListener) :
     SplashActivityContract.Presenter {
-
-
     private var view: SplashActivityContract.View? = null
 
     override fun setView(view: SplashActivityContract.View) {
@@ -17,13 +15,11 @@ class SplashActivityPresenter(private val runTimePermissionListener: RunTimePerm
     }
 
     override fun create() {
-
         view?.run {
             initUi()
             startGifAnim()
             startHandler()
         }
-
     }
 
     override fun handlerFinished() {
@@ -35,10 +31,7 @@ class SplashActivityPresenter(private val runTimePermissionListener: RunTimePerm
             view?.intentToMainActivity()
         } else {
             view?.intentToLocationPermissionActivity()
-
         }
         view?.finishCurrentActivity()
     }
-
-
 }

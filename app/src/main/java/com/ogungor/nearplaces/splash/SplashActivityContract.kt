@@ -2,8 +2,8 @@ package com.ogungor.nearplaces.splash
 
 interface SplashActivityContract {
 
-    interface Presenter{
-        fun setView(view : View)
+    interface Presenter {
+        fun setView(view: View)
 
         fun destroy()
 
@@ -12,18 +12,9 @@ interface SplashActivityContract {
         fun handlerFinished()
 
         fun checkLocationPermission()
-
-
-
-
-
-
-
-
-
     }
 
-    interface View{
+    interface View {
 
         fun initUi()
 
@@ -36,13 +27,5 @@ interface SplashActivityContract {
         fun intentToMainActivity()
 
         fun finishCurrentActivity()
-
-
-
-
-
-
-
     }
-
 }

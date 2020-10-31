@@ -8,5 +8,5 @@
     <color name="default_text_color">#282828</color>
     <color name="grey">#757575</color>
     <color name="persian_red">#d03f3f</color>
-
+    <color name="loading_bg_color">#50ffffff</color>
 </resources>

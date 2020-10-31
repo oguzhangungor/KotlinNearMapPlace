@@ -10,16 +10,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class MainActivityPresenter(
     private val service: IGoogleAPIService,
     private val urlProvider: UrlProvider
 ) : MainActivityContract.Presenter {
 
     private var placeType: PlaceType = PlaceType.MARKET
-
     private var location: Location? = null
-
     private var view: MainActivityContract.View? = null
 
     override fun setView(view: MainActivityContract.View) {
@@ -70,19 +67,12 @@ class MainActivityPresenter(
                                 mapClear()
                                 showPlace(placeList, placeType)
                                 showLocation(location)
-
                             }
                         }
-
-
                     }
                 }
-
-
             }
             )
-
-
     }
 
     override fun bottomNavigationClick(id: Int) {
@@ -98,6 +88,4 @@ class MainActivityPresenter(
             getNearPlaces(it, this.placeType)
         }
     }
-
-
 }

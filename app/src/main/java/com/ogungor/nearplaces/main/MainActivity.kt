@@ -27,60 +27,40 @@ import com.ogungor.nearplaces.util.urlprocess.UrlProvider
 class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.View {
 
     private lateinit var mMap: GoogleMap
-
     private var locationProvider: LocationProvider? = null
-
-    private  lateinit var markerProvider: MarkerProvider
-
-    lateinit var bottomNavigator:BottomNavigationView
-
-    lateinit var progressBar: RelativeLayout
-
-    lateinit var lottieView: LottieAnimationView
-
-
-    lateinit var mainActivityPresenter: MainActivityContract.Presenter
-
+    private lateinit var markerProvider: MarkerProvider
+    private lateinit var bottomNavigator: BottomNavigationView
+    private  lateinit var progressBar: RelativeLayout
+    private lateinit var lottieView: LottieAnimationView
+    private lateinit var mainActivityPresenter: MainActivityContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
 
-        val service=Common.googleAPIService
-        val urlProvider=UrlProvider()
-
-        markerProvider= MarkerProvider()
-
-        locationProvider=GmsLocationProvider(this)
-
-        mainActivityPresenter = MainActivityPresenter(service,urlProvider).apply {
+        val service = Common.googleAPIService
+        val urlProvider = UrlProvider()
+        markerProvider = MarkerProvider()
+        locationProvider = GmsLocationProvider(this)
+        mainActivityPresenter = MainActivityPresenter(service, urlProvider).apply {
             setView(this@MainActivity)
             create()
-
-
         }
-
     }
-
     override fun getLayout(): Int = R.layout.activity_main
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         disableMap()
-        mMap.isMyLocationEnabled=true
-        locationProvider?.getCurrentLocation(object : LocationProcessUpdateListener{
+        mMap.isMyLocationEnabled = true
+        locationProvider?.getCurrentLocation(object : LocationProcessUpdateListener {
             override fun onLocationChanged(location: Location) {
                 mainActivityPresenter.locationChange(location)
-
-
             }
 
             override fun onFailed() {
             }
-
         })
-
     }
 
     override fun enableMap() {
@@ -89,33 +69,26 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
 
     override fun disableMap() {
         mMap.uiSettings.setAllGesturesEnabled(false)
-
     }
 
     override fun initUi() {
-        bottomNavigator=findViewById(R.id.bottom_navigator_view)
-        progressBar=findViewById(R.id.progressBar)
-        lottieView=findViewById(R.id.lottieView)
+        bottomNavigator = findViewById(R.id.bottom_navigator_view)
+        progressBar = findViewById(R.id.progressBar)
+        lottieView = findViewById(R.id.lottieView)
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
-
-
-
-
     }
 
     override fun showProgress() {
         lottieView.playAnimation()
-        progressBar.visibility=View.VISIBLE
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
         lottieView.pauseAnimation()
-        progressBar.visibility=View.GONE
-
+        progressBar.visibility = View.GONE
     }
 
     override fun initListeners() {
@@ -125,37 +98,27 @@ class MainActivity : BaseActivity(), OnMapReadyCallback, MainActivityContract.Vi
         }
     }
 
-    override fun showPlace(placeList: Array<Place>,placeType: PlaceType) {
-
-        for (place in placeList){
-            mMap.addMarker(markerProvider.getRelatedMarker(place,placeType))
+    override fun showPlace(placeList: Array<Place>, placeType: PlaceType) {
+        for (place in placeList) {
+            mMap.addMarker(markerProvider.getRelatedMarker(place, placeType))
         }
-
-
     }
 
     override fun showLocation(location: Location) {
-        var latLng=LatLng(location.latitude,location.longitude)
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16f))
-
+        val latLng = LatLng(location.latitude, location.longitude)
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16f))
     }
 
-    override fun stopLocation() {
-
-        super.onStop()
-    }
 
     override fun mapClear() {
         mMap.clear()
     }
 
     override fun showGeneralFailedToast() {
-       showToast(getString(R.string.toast_failed_message))
+        showToast(getString(R.string.toast_failed_message))
     }
 
     override fun showEmptyToast(placeType: PlaceType) {
-        showToast(getString(R.string.toast_empty_near_message,placeType.toString()))
-
+        showToast(getString(R.string.toast_empty_near_message, placeType.toString()))
     }
-
 }

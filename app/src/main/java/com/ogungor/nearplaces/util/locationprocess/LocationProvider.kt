@@ -4,6 +4,5 @@ interface LocationProvider {
 
     fun getLastLocation(locationProcessUpdateListener: LocationProcessUpdateListener)
 
-
     fun getCurrentLocation(locationProcessUpdateListener: LocationProcessUpdateListener)
 }
